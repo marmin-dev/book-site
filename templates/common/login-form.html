@@ -1,0 +1,44 @@
+ {% extends 'base.html' %}
+ {% block content %}
+
+  <!-- login -->
+            <div class="wrapper">
+                <div class="logreg-box">
+                    <div class="form-box login">
+                        <div class="logreg-title">
+                            <h2>Login</h2>
+                            <p>Please login to use the platform</p>
+                        </div>
+                        <form action="#">
+                            <div class="input-box">
+                                <span class="icon"><i class='bx bx-envelope'></i></span>
+                                <input type="email" required>
+                                <label>Email</label>
+                            </div>
+                            <div class="input-box">
+                                <span class="icon"><i class='bx bx-lock' ></i></span>
+                                <input type="password" required>
+                                <label>Password</label>
+                            </div>
+                            <div class="remember-forgot">
+                                <a href="#">Forgot password?</a>
+                            </div>
+                            <button type="submit"
+                            class="btn">Login</button>
+                            <div class="logreg-link">
+                                <p>Don't have an account?
+                                    <a href="#"
+                                    class="resister">Resister</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="media-options">
+                    <a href="#">
+                        <i class='bx bxl-google' ></i>
+                        <span>Login With Google</span>
+                    </a>
+                </div>
+            </div>
+        <!-- login -->
+ {% blockend %}
