@@ -1,6 +1,6 @@
 from django.db import models
 
-class Books(models.Model):
+class Book(models.Model):
     title = models.CharField('제목',max_length=50,unique=True,null=False)
     extent=models.CharField('출판사',max_length=50)
     description=models.TextField('소개',max_length=500)

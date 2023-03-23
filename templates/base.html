@@ -7,14 +7,17 @@
         initial-scale=1.0">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="{% static 'css/style.css' %}?after">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+        {% block script %}
+        {% endblock %}
          <title>booker</title>
     </head>
     <body>
         <header class="header">
             <a href="#" class="logo">Booker</a>
             <nav class="navbar">
-                <a href="#">Home</a>
-                <a href="#">About</a>
+                <a href="/">Home</a>
+                <a href="{% url 'booker:book-list' %}">List</a>
                 <a href="#">Services</a>
                 <a href="#">Contact</a>
                 <button class="btnLogin-popup">Login</button>

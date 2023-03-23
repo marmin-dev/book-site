@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section-home">
+            <div class="booker-list">
+                <h2>책 목록</h2>
+                <table class="booker-table">
+                    <thead>
+                        <tr>
+                            <th>책표지</th>
+                            <th>책제목</th>
+                            <th>책저자</th>
+                            <th>출간일</th>
+                        </tr>
+                    </thead>
+                    <tbody class="book-tbody">
+                    {% for book in booklist %}
+                        <tr>
+                            <td><img src="{{ book.cover }}" class="list-img"></td>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.rights }}</td>
+                            <td>{{ book.issued_at }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="book-paginate">
+                      {% for page_number in booklist.paginator.page_range %}
+  {% if page_number >= booklist.number|add:-5 and page_number <= booklist.number|add:5 %}
+    {% if page_number == booklist.number %}
+        <li class="bookpg-li" aria-current="page">
+                <a class="page-link" data-page="{{ page_number }}"
+                   href="#">{{ page_number }}</a>
+        </li>
+        {% else %}
+        <li class="bookpg-li">
+            <a class="page-link" href="#" data-page="{{ page_number }}">
+                {{ page_number }}
+            </a>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+                </div>
+            </div>
+
+        </section>
+        <form id="searchForm" method="get" action="{{ request.path }}">
+            <input type="hidden" id="page" name="page" value="{{ page }}">
+        </form>
+        {% block script %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".page-link").on('click',function(){
+            $("#page").val($(this).data("page"));
+            $("#searchForm").submit();
+        });
+        });
+    </script>
+        {% endblock %}
+{% endblock %}

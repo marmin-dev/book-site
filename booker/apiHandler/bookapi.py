@@ -8,7 +8,7 @@ import requests
 from pathlib import Path
 import os, json
 from django.core.exceptions import ImproperlyConfigured
-from booker.models import Books
+from booker.models import Book
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -36,7 +36,7 @@ def getBookData(n):
 def data_save(n):
     for i in range(n):
         for data in getBookData(i+1):
-            book = Books()
+            book = Book()
             book.title = data['title']
             book.extent = data['extent']
             book.description = data['description']
