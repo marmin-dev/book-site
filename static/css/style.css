@@ -354,6 +354,121 @@ td{
 
 }
 
+.book-page{
+    text-decoration: none;
+    color: #fff;
+}
+
+.book-page:hover{
+    background: linear-gradient(46deg,red,cyan);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.book-page:visited{
+    color: #fff;
+
+}
+
+.detail-all{
+    display: flex;
+    transform: translateY(4%);
+    color: #fff;
+
+}
+
+.detail-left {
+    height: 700px;
+    width: 400px;
+    backdrop-filter: blur(15px);
+    border-radius: 40px;
+    overflow:auto;
+
+}
+
+.comment-form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-right {
+    height: 700px;
+    width: 700px;
+    backdrop-filter: blur(15px);
+    margin-left: 20px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow:auto;
+}
+
+.detail-right h2{
+    margin-bottom: 20px;
+
+}
+
+.detail-info{
+    display: flex;
+
+}
+
+.detail-table{
+    width:300px
+
+}
+
+.detail-img{
+    width: 300px;
+    margin-left: 150px;
+}
+
+.detail-description{
+    margin: 30px;
+    margin-top: 10px;
+
+}
+
+.detail-left h2 {
+    margin-top:30px
+}
+
+.detail-comment{
+    width: 90%;
+}
+.detail-comment input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500%;
+    padding-right: 25px;
+    position: relative;
+    border-bottom: 2px solid #fff;
+    height: 30px;
+}
+
+.comment-label{
+    transform: translateY(15px);
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.comment-list {
+    justify-content: start;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+.comment-list p{
+    margin: 20px;
+}
+
 .book-paginate {
     display: flex;
 }

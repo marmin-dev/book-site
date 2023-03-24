@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404,redirect
 from django.views.generic import ListView, DetailView
-from .models import Book
+from .models import Book,Comment
 from django.core.paginator import Paginator
+from .forms import CommentForm
+from django.utils import timezone
 
 def index(request):
     return render(request,'home.html',{})
@@ -26,3 +28,20 @@ def book_list(request):
     page_obj = paginator.get_page(page)
     context = {'booklist':page_obj,'page':page}
     return render(request,'booker/booklist.html',context)
+
+def book_detail(request,book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    # comment = Comment.objects.filter(post=book).order_by(['-create_at'])
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.create_at = timezone.now()
+            comment.post = book
+            comment.save()
+            return redirect('booker:detail',book_id)
+    else:
+        form = CommentForm()
+    context = {'book':book,'form':form}
+    return render(request, 'booker/book-detail.html', context)

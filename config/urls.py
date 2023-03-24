@@ -6,5 +6,6 @@ from booker import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('booker/',include('booker.urls')),
-    path('', views.index)
+    path('', views.index),
+    path('common.',include('common.urls')),
 ]

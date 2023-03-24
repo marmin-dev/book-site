@@ -10,22 +10,28 @@
                             <h2>Login</h2>
                             <p>Please login to use the platform</p>
                         </div>
-                        <form action="#">
+                        <form method="post" class="post-form" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
                             <div class="input-box">
                                 <span class="icon"><i class='bx bx-envelope'></i></span>
-                                <input type="email" required>
-                                <label>Email</label>
+                                <input type="text" class="form-control" name="username" id="username" required>
+                                <label for="username">Username</label>
                             </div>
+                            </div>
+                            <div class="form-group">
                             <div class="input-box">
                                 <span class="icon"><i class='bx bx-lock' ></i></span>
-                                <input type="password" required>
-                                <label>Password</label>
+                                <input type="password"  class="form-control" name="password" id="password"  required>
+                                <label for="password">Password</label>
+                            </div>
                             </div>
                             <div class="remember-forgot">
                                 <a href="#">Forgot password?</a>
                             </div>
                             <button type="submit"
                             class="btn">Login</button>
+
                             <div class="logreg-link">
                                 <p>Don't have an account?
                                     <a href="#"
@@ -44,4 +50,4 @@
         <!-- login -->
 
  </section>
- {% blockend %}
+ {% endblock %}

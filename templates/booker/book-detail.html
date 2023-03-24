@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section-home">
+ <div class="detail-all">
+                <!-- left -->
+                <div class="detail-left">
+                    <div class="comment-form">
+                    <h2>댓글</h2>
+                    <div class="detail-comment">
+                        <form method="post">
+                            {% csrf_token %}
+                            <label for="content" class="comment-label">댓글</label>
+                            <input type="text" name="content" id="content">
+                            <button type="submit" class="book-btn">댓글추가하기</button>
+                        </form>
+                    </div>
+                    </div>
+                <br>
+                    {% for comment in book.comment_set.all %}
+                <div class="comment-list">
+                    <p><b>{{ comment.author }}</b></p>
+                    <p>{{ comment.content }}</p>
+                </div>
+                    {% endfor %}
+                </div>
+                <!-- left -->
+                <!-- right -->
+                <div class="detail-right">
+                    <h2>{{ book.title }}</h2>
+                    <div class="detail-info">
+                    <div class="detail-img">
+                        <img src="{{ book.cover }}" style="height: 150px;">
+                    </div>
+                        <table class="detail-table">
+                            <tbody>
+                                <tr>
+                                    <td>출판사</td>
+                                    <td>{{ book.extent }}</td>
+                                </tr>
+                                <tr>
+                                    <td>저자</td>
+                                    <td>{{ book.rights }}</td>
+                                </tr>
+                                <tr>
+                                    <td>가격</td>
+                                    <td>{{ book.charge }}</td>
+                                </tr>
+                                <tr>
+                                    <td>출간일</td>
+                                    <td>{{ book.issued_at }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="detail-description">
+                        <p><b>요약</b></p><br>
+                        {{ book.description }}
+                    </div>
+                    <div style="width: 90%;">
+                    <a href="#" class="book-btn">추천하기</a>
+                </div>
+            </div>
+            <!-- right -->
+            </div>
+</section>
+{% endblock %}
