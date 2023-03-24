@@ -20,7 +20,7 @@
                 <a href="{% url 'booker:book-list' %}">List</a>
                 <a href="{% url 'booker:random' %}">RandomBook</a>
                 {% if user.is_authenticated %}
-                <a href="#">{{ user.username }}</a>
+                <a href="{% url 'booker:profile' %}">{{ user.username }}</a>
                 {% endif %}
                 <a href="#">AboutUs</a>
                 {% if user.is_authenticated %}

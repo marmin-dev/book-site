@@ -83,3 +83,26 @@ def book_reference(request):
             return redirect('login')
     return render(request, 'booker/book-random.html')
 
+
+def book_profile(request):
+    sa = request.GET.get('sa','liked')
+    user = request.user
+    if sa == 'comment':
+        comments = Comment.objects.filter(author=request.user)
+        book_list = [comment.post for comment in comments]
+        book_title_set = set()
+        books = []
+        for book in book_list:
+            if book.title not in book_title_set:
+                book_title_set.add(book.title)
+                books.append(book)
+
+        context = {'books': books}
+        return render(request, 'booker/profile.html', context)
+    else:
+        books = Book.objects.filter(like=user)
+        context = {'books': books}
+        return render(request, 'booker/profile.html', context)
+
+
+

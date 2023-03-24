@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section-home">
+            <div class="booker-list">
+                <h2>{{ user.username }}</h2>
+                <p>안녕하세요! {{ user.username }}님!</p>
+                <div class="profile-ca">
+                    <form id="likeForm" method="get" action="{{ request.path }}">
+                        <p class="profile-sel" id="cl1">내가 추천한 책</p>
+                        <input type="hidden" name="sa" id="sa1" value="like">
+                    </form>
+                    <form id="commentForm" method="get" action="{{ request.path }}">
+                    <p class="profile-sel" id="cl2">내가 댓글단 책</p>
+                    <input type="hidden" name="sa" id="sa2" value="comment">
+                    </form>
+                </div>
+                <table class="booker-table">
+                    <thead>
+                        <tr>
+                            <th>책표지</th>
+                            <th>책제목</th>
+                            <th>댓글수/추천수</th>
+                            <th>책저자</th>
+                            <th>출간일</th>
+                        </tr>
+                    </thead>
+                    <tbody class="book-tbody">
+                    {% for book in books %}
+                        <tr>
+                            <td><img src="{{ book.cover }}" class="list-img"></td>
+                            <td><a href="{% url 'booker:detail' book.id %}" class="book-page">{{ book.title }}</a></td>
+                            <td>{{ book.comment_set.count }}/{{ book.like.all.count }}</td>
+                            <td>{{ book.rights }}</td>
+                            <td>{{ book.issued_at }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <script>
+                    $(document).ready(function(){
+                           $("#cl1").on('click', function() {
+                             var sa1Value = $("#sa1").val();
+                             var baseUrl = window.location.href.split("?")[0];
+                             var newUrl = baseUrl + "?sa=" + sa1Value;
+                             window.location.href = newUrl;
+                        });
+                         $("#cl2").on('click', function() {
+                             var sa2Value = $("#sa2").val();
+                             var baseUrl = window.location.href.split("?")[0];
+                             var newUrl = baseUrl + "?sa=" + sa2Value;
+                             window.location.href = newUrl;
+                        });
+                    });
+                </script>
+            </div>
+        </section>
+{% endblock %}
