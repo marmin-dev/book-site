@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section-home">
+            <div class="home-content">
+                <h1>랜덤 책 뽑기</h1>
+                <h3>랜덤으로 책을 추천해드려요!</h3>
+                <h3>아래 버튼을 눌러보세요!</h3>
+                <form method="post" action="{% url 'booker:random' %}">
+                    {% csrf_token %}
+                  <button type="submit" class="book-btn">랜덤 책 뽑기</button>
+                </form>
+            </div>
+        </section>
+{% endblock %}
