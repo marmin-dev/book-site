@@ -7,11 +7,12 @@
                 <div class="logreg-box">
                     <div class="form-box login">
                         <div class="logreg-title">
-                            <h2>Login</h2>
-                            <p>Please login to use the platform</p>
+                            <h2>로그인</h2>
+                            <p>로그인 해주세요!</p>
                         </div>
                         <form method="post" class="post-form" action="{% url 'login' %}">
                             {% csrf_token %}
+                            {% include 'error.html' %}
                             <div class="form-group">
                             <div class="input-box">
                                 <span class="icon"><i class='bx bx-envelope'></i></span>
@@ -33,9 +34,8 @@
                             class="btn">Login</button>
 
                             <div class="logreg-link">
-                                <p>Don't have an account?
-                                    <a href="#"
-                                    class="resister">Resister</a></p>
+                                <p>아이디가 없습니까?
+                                    <a href="{% url 'signup' %}" class="resister">가입하기</a></p>
                             </div>
                         </form>
                     </div>

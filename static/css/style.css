@@ -23,7 +23,6 @@
     color: #fff;
     text-decoration: none;
     font-weight: 700;
-    pointer-events: none;
 }
 
 .navbar a {
@@ -475,4 +474,18 @@ td{
 
 .bookpg-li{
     list-style: none;
+}
+
+.alert-danger {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    background-color: rgba(224, 0, 0, 0.52);
+    width: 300px;
+    height: fit-content;
+}
+.alert-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

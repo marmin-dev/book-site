@@ -16,7 +16,7 @@
                     {% for book in booklist %}
                         <tr>
                             <td><img src="{{ book.cover }}" class="list-img"></td>
-                            <td><a href="{% url 'booker:detail' book.id %}">{{ book.title }}</a></td>
+                            <td><a href="{% url 'booker:detail' book.id %}" class="book-page">{{ book.title }}</a></td>
                             <td>{{ book.rights }}</td>
                             <td>{{ book.issued_at }}</td>
                         </tr>
