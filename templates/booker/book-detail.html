@@ -57,7 +57,11 @@
                         {{ book.description }}
                     </div>
                     <div style="width: 90%;">
-                    <a href="#" class="book-btn">추천하기</a>
+                        {% if liked %}
+                        <a class="book-btn">이미 추천하셨습니다</a>
+                        {% else %}
+                    <a href="{% url 'booker:like' book.id %}" class="book-btn">추천하기</a>
+                        {% endif %}
                 </div>
             </div>
             <!-- right -->

@@ -401,12 +401,12 @@ td{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow:auto;
+    overflow:overlay;
 }
 
 .detail-right h2{
     margin-bottom: 20px;
-
+    margin-top: 70px;
 }
 
 .detail-info{

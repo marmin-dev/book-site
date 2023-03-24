@@ -8,6 +8,7 @@
                         <tr>
                             <th>책표지</th>
                             <th>책제목</th>
+                            <th>댓글수/추천수</th>
                             <th>책저자</th>
                             <th>출간일</th>
                         </tr>
@@ -17,6 +18,7 @@
                         <tr>
                             <td><img src="{{ book.cover }}" class="list-img"></td>
                             <td><a href="{% url 'booker:detail' book.id %}" class="book-page">{{ book.title }}</a></td>
+                            <td>{{ book.comment_set.count }}/{{ book.like.all.count }}</td>
                             <td>{{ book.rights }}</td>
                             <td>{{ book.issued_at }}</td>
                         </tr>

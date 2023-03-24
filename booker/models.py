@@ -9,6 +9,7 @@ class Book(models.Model):
     cover = models.CharField('책표지',max_length=100)
     rights = models.CharField('저자',max_length=50)
     issued_at = models.CharField('출판일자',max_length=20)
+    like = models.ManyToManyField(User,blank=True)
 
     def __str__(self):
         return self.title
@@ -20,3 +21,5 @@ class Comment(models.Model):
     create_at = models.DateTimeField()
     def __str__(self):
         return self.content
+
+

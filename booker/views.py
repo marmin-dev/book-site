@@ -4,6 +4,8 @@ from .models import Book,Comment
 from django.core.paginator import Paginator
 from .forms import CommentForm
 from django.utils import timezone
+from django.contrib.auth.models import User
+
 
 def index(request):
     return render(request,'home.html',{})
@@ -43,5 +45,19 @@ def book_detail(request,book_id):
             return redirect('booker:detail',book_id)
     else:
         form = CommentForm()
-    context = {'book':book,'form':form}
+        liked = False
+        if request.user in book.like.all():
+            liked = True
+    context = {'book':book,'form':form,'liked':liked}
     return render(request, 'booker/book-detail.html', context)
+
+
+
+def book_like(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    book.like.add(request.user)
+    book.save()
+    return redirect('booker:detail',book_id)
+
+
+
