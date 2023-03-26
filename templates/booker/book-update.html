@@ -10,7 +10,7 @@
                         <form method="post">
                             {% csrf_token %}
                             <label for="content" class="comment-label">댓글</label>
-                            <input type="text" name="content" id="content" value="{{form.content.value|default_if_none:''}}" required>
+                            <input type="text" name="content" id="content" placeholder="수정할 댓글을 입력해주세요" required>
                             <button type="submit" class="book-btn">댓글 수정하기</button>
                         </form>
                     </div>
