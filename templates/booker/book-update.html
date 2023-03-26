@@ -10,8 +10,8 @@
                         <form method="post">
                             {% csrf_token %}
                             <label for="content" class="comment-label">댓글</label>
-                            <input type="text" name="content" id="content" required>
-                            <button type="submit" class="book-btn">댓글추가하기</button>
+                            <input type="text" name="content" id="content" value="{{form.content.value|default_if_none:''}}" required>
+                            <button type="submit" class="book-btn">댓글 수정하기</button>
                         </form>
                     </div>
                     </div>
@@ -21,10 +21,6 @@
                     <div class="comment">
                         <div class="comment-update">
                             <p><b>{{ comment.author }}</b></p>
-                            {% if user == comment.author %}
-                            <a href="{% url 'booker:comment-update' book.id comment.id %}" class="comment-text"><i class='bx bxs-message-square-edit'></i></a>
-                            <a href="{% url 'booker:comment-delete' comment.id %}" class="comment-text"><i class='bx bxs-message-square-x' ></i></a>
-                            {% endif %}
                         </div>
                     </div>
                     <p>{{ comment.content }}</p>

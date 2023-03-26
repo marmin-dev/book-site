@@ -14,6 +14,8 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+
+
 class Comment(models.Model):
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     content = models.CharField('내용',max_length=255)
@@ -21,5 +23,6 @@ class Comment(models.Model):
     create_at = models.DateTimeField()
     def __str__(self):
         return self.content
-
+    class Meta:
+        ordering = ['-create_at']
 

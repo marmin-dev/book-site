@@ -1,5 +1,4 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from django.views.generic import ListView, DetailView
 from .models import Book,Comment
 from django.core.paginator import Paginator
 from .forms import CommentForm
@@ -7,6 +6,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 import random
 from django.db.models import Count
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request,'home.html',{})
@@ -103,6 +103,33 @@ def book_profile(request):
         books = Book.objects.filter(like=user)
         context = {'books': books}
         return render(request, 'booker/profile.html', context)
+
+
+@login_required(login_url='login')
+def comment_delete(request, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    post = comment.post
+    if request.user == comment.author:
+        comment.delete()
+    return redirect('booker:detail',post.id)
+
+@login_required(login_url='login')
+def comment_update(request, book_id,comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    book = get_object_or_404(Book, pk=book_id)
+    if request.method =="POST":
+        form = CommentForm(request.POST,instance=comment)
+        if form.is_valid():
+            comment = form.save()
+            return redirect('booker:detail',book_id)
+    else:
+        form = CommentForm()
+    liked = False
+    if request.user in book.like.all():
+        liked = True
+    context = {'book': book, 'form': form, 'liked': liked}
+    return render(request, 'booker/book-update.html', context)
+
 
 
 

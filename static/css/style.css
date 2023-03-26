@@ -411,7 +411,6 @@ td{
 
 .detail-info{
     display: flex;
-
 }
 
 .detail-table{
@@ -509,4 +508,27 @@ td{
     margin-right:100px;
     margin-bottom: 20px;
     font-size: 18px;
+}
+
+.profile-sel:hover {
+    background: linear-gradient(46deg,red,cyan);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    cursor: pointer;
+}
+
+.comment-update {
+    display:flex;
+}
+
+.comment-text{
+    text-decoration: none;
+    color: #fff;
+    transform: translateY(30%);
+}
+
+.comment-text:hover{
+    background: linear-gradient(46deg,red,cyan);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
