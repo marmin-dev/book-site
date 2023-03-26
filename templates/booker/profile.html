@@ -36,6 +36,29 @@
                     {% endfor %}
                     </tbody>
                 </table>
+                <div class="book-paginate">
+                      {% for page_number in books.paginator.page_range %}
+  {% if page_number >= books.number|add:-5 and page_number <= books.number|add:5 %}
+    {% if page_number == books.number %}
+        <li class="bookpg-li" aria-current="page">
+                <a class="page-link" data-page="{{ page_number }}"
+                   href="#">{{ page_number }}</a>
+        </li>
+        {% else %}
+        <li class="bookpg-li">
+            <a class="page-link" href="#" data-page="{{ page_number }}">
+                {{ page_number }}
+            </a>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+                    <form id="searchForm" method="get" action="{{ request.path }}">
+            <input type="hidden" id="page" name="page" value="{{ page }}">
+            <input type="hidden" id="sa" name="sa" value="{{ sa }}">
+        </form>
+                </div>
+            </div>
                 <script>
                     $(document).ready(function(){
                            $("#cl1").on('click', function() {
@@ -49,6 +72,13 @@
                              var baseUrl = window.location.href.split("?")[0];
                              var newUrl = baseUrl + "?sa=" + sa2Value;
                              window.location.href = newUrl;
+                        });
+                        $(".page-link").on('click',function(){
+                            const URLSearch = new URLSearchParams(location.search);
+                            sa=  URLSearch.get('sa');
+                            $("#sa").val(sa);
+                            $("#page").val($(this).data("page"));
+                            $("#searchForm").submit();
                         });
                     });
                 </script>

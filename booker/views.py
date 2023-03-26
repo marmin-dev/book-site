@@ -86,6 +86,7 @@ def book_reference(request):
 
 def book_profile(request):
     sa = request.GET.get('sa','liked')
+    page = request.GET.get('page','1')
     user = request.user
     if sa == 'comment':
         comments = Comment.objects.filter(author=request.user)
@@ -96,13 +97,12 @@ def book_profile(request):
             if book.title not in book_title_set:
                 book_title_set.add(book.title)
                 books.append(book)
-
-        context = {'books': books}
-        return render(request, 'booker/profile.html', context)
     else:
         books = Book.objects.filter(like=user)
-        context = {'books': books}
-        return render(request, 'booker/profile.html', context)
+    paginator = Paginator(books,7)
+    page_obj = paginator.get_page(page)
+    context = {'books': page_obj}
+    return render(request, 'booker/profile.html', context)
 
 
 @login_required(login_url='login')
