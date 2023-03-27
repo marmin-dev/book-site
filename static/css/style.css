@@ -532,3 +532,20 @@ td{
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
+
+.comment-delete {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #fff;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    border-radius: 40px;
+    color: #fff;
+    text-decoration: none;
+    transition: .5s;
+}
+

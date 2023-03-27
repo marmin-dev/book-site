@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=50, unique=True, verbose_name='제목')),
                 ('extent', models.CharField(max_length=50, verbose_name='출판사')),
-                ('description', models.TextField(max_length=500, verbose_name='소개')),
+                ('description', models.TextField(max_length=1000, verbose_name='소개')),
                 ('charge', models.CharField(max_length=10, verbose_name='가격')),
                 ('cover', models.CharField(max_length=100, verbose_name='책표지')),
                 ('rights', models.CharField(max_length=50, verbose_name='저자')),

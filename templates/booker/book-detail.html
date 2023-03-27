@@ -20,14 +20,20 @@
                 <div class="comment-list">
                     <div class="comment">
                         <div class="comment-update">
-                            <p><b>{{ comment.author }}</b></p>
+                            <p class="{{ comment.id }}"><b>{{ comment.author }}</b></p>
                             {% if user == comment.author %}
-                            <a href="{% url 'booker:comment-update' book.id comment.id %}" class="comment-text"><i class='bx bxs-message-square-edit'></i></a>
-                            <a href="{% url 'booker:comment-delete' comment.id %}" class="comment-text"><i class='bx bxs-message-square-x' ></i></a>
+                            <a href="{% url 'booker:comment-update' book.id comment.id %}" class="comment-text {{comment.id}}"><i class='bx bxs-message-square-edit'></i></a>
+                            <a class="comment-text {{comment.id}}"
+                            onclick="deleteModal('{{comment.id}}')"><i class='bx bxs-message-square-x' ></i></a>
+                            <div class="comment-confirm" id="{{ comment.id }}" style="display:none;">
+                                <p><b>정말로 삭제하시겠습니까?</b></p>
+                                <a  class="comment-delete" href="{% url 'booker:comment-delete' comment.id %}">삭제하기</a>
+                                <a onclick="unDeleteModal('{{comment.id}}')" class="comment-delete">취소하기</a>
+                            </div>
                             {% endif %}
                         </div>
                     </div>
-                    <p>{{ comment.content }}</p>
+                    <p class="{{comment.id}}">{{ comment.content }}</p>
                 </div>
                     {% endfor %}
                 </div>
@@ -66,7 +72,7 @@
                     </div>
                     <div style="width: 90%;">
                         {% if liked %}
-                        <a class="book-btn">이미 추천하셨습니다</a>
+                        <a href="{% url 'booker:unlike' book.id %}" class="book-btn">이미 추천하셨습니다</a>
                         {% else %}
                     <a href="{% url 'booker:like' book.id %}" class="book-btn">추천하기</a>
                         {% endif %}
@@ -74,5 +80,23 @@
             </div>
             <!-- right -->
             </div>
+    <script>
+        function deleteModal(n) {
+            var cc = document.getElementsByClassName(n);
+            var ci = document.getElementById(n);
+            for (var i = 0; i < cc.length; i++) {
+                cc[i].style.display = "none";
+            }
+                ci.style.display = "block";
+            }
+        function unDeleteModal(n) {
+            var cc = document.getElementsByClassName(n);
+            var ci = document.getElementById(n);
+            for (var i = 0; i < cc.length; i++) {
+                cc[i].style.display = "block";
+            }
+                ci.style.display = "none";
+            }
+        </script>
 </section>
 {% endblock %}
