@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 app_name='booker'
@@ -10,5 +10,5 @@ urlpatterns = [
     path('random/', views.book_reference, name='random'),
     path('profile/',views.book_profile, name='profile'),
     path('comment/delete/<int:comment_id>',views.comment_delete,name='comment-delete'),
-    path('comment/update/<int:book_id>/<int:comment_id>', views.comment_update, name="comment-update")
+    path('comment/update/<int:book_id>/<int:comment_id>', views.comment_update, name="comment-update"),
 ]

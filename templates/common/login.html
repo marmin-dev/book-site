@@ -1,6 +1,6 @@
  {% extends 'base.html' %}
  {% block content %}
-
+{% load socialaccount %}
   <!-- login -->
  <section class="section">
             <div class="wrapper">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="media-options">
-                    <a href="#">
+                    <a href="{% provider_login_url 'google' %}">
                         <i class='bx bxl-google' ></i>
                         <span>Login With Google</span>
                     </a>
