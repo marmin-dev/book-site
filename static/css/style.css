@@ -549,3 +549,12 @@ td{
     transition: .5s;
 }
 
+.about-us{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.about-logo{
+    width: 90px;
+}

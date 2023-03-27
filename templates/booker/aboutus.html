@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<section class="section-home">
+            <div class="booker-list">
+               <div class="about-us">
+                    <h2>Marmin</h2>
+                    <h3>안녕하세요! 뭐든 만들고싶은 개발자 박태욱입니다</h3>
+                    <h2>언어</h2>
+                    <p>제가 공부한 언어는</p>
+                    <p><strong>JAVA</strong></p>
+                    <p><strong>Python</strong></p>
+                    <p><strong>HTML,CSS,JS</strong></p>
+                    <p><strong>C</strong></p>
+                    <p><strong>SQL</strong></p>
+                    <br>
+
+                        <h2>공부한것들</h2>
+                        <p>공부한 프레임워크 라이브러리 DB 등등</p>
+                        <p><strong>SpringBoot</strong></p>
+                        <p><strong>Django</strong></p>
+                        <p><strong>React.js</strong></p>
+                        <p><strong>Docker</strong></p>
+                        <p><strong>VanillaJs</strong></p>
+                        <p><strong>MySQL</strong></p>
+
+               </div>
+               <div style="display: flex;">
+            <a href="https://github.com/marmin-dev" style="margin:30px;"><img src="{% static 'css/img/github.png' %}" class="about-logo"></a>
+            <br>
+            <a href="https://marmindev.notion.site/IT-1ccb391d78844eddaeae38eb717613e2" style="margin:30px ;"><img src="{% static 'css/img/notion.png' %}" class="about-logo"></a>
+               </div>
+            </div>
+        </section>
+
+{% endblock %}

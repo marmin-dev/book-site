@@ -162,5 +162,6 @@ def comment_update(request, book_id,comment_id):
     return render(request, 'booker/book-update.html', context)
 
 
-
+def about_us(request):
+    return render(request ,'booker/aboutus.html', {})
 
