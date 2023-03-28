@@ -558,3 +558,10 @@ td{
 .about-logo{
     width: 90px;
 }
+
+.four{
+    font-size: 130px;
+    background: linear-gradient(46deg,red,green);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}

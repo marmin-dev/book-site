@@ -9,3 +9,5 @@ urlpatterns = [
     path('', views.index,name='index'),
     path('common/',include('common.urls')),
 ]
+
+handler404 = 'common.views.page_not_found'
