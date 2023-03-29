@@ -8,7 +8,7 @@
                 </p>
                 <p>소개시켜줄것입니다!</p>
                 <a href="{% url 'pybo:profile-list' %}" class="book-btn">사람들 프로필 보러가기</a>
-                <a href="#" class="book-btn" style="margin-top:20px">새 프로필 작성하기</a>
+                <a href="{% url 'pybo:profile-create' %}" class="book-btn" style="margin-top:20px">새 프로필 작성하기</a>
             </div>
         </section>
 {% endblock %}

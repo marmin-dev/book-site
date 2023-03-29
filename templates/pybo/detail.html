@@ -1,0 +1,94 @@
+{% extends 'pybo-base.html' %}
+{% block content %}
+<section class="section-pybo">
+ <div class="detail-all">
+                <!-- left -->
+                <div class="detail-left">
+                    <div class="comment-form">
+                    <h2>댓글</h2>
+                    <div class="detail-comment">
+                        <form method="post">
+                            {% csrf_token %}
+                            <label for="content" class="comment-label">댓글</label>
+                            <input type="text" name="content" id="content" placeholder="댓글을 입력해주세요" required>
+                            <button type="submit" class="book-btn">댓글추가하기</button>
+                        </form>
+                    </div>
+                    </div>
+                <br>
+                    {% for comment in profile.profilecomment_set.all %}
+                <div class="comment-list">
+                    <div class="comment">
+                        <div class="comment-update">
+                            <p class="{{ comment.id }}"><b>{{ comment.author }}</b></p>
+                            {% if user.username == comment.author %}
+                            <a href="{% url 'pybo:comment-update' profile.id comment.id %}" class="comment-text {{comment.id}}"><i class='bx bxs-message-square-edit'></i></a>
+                            <a class="comment-text {{comment.id}}"
+                            onclick="deleteModal('{{comment.id}}')"><i class='bx bxs-message-square-x' ></i></a>
+                            <div class="comment-confirm" id="{{ comment.id }}" style="display:none;">
+                                <p><b>정말로 삭제하시겠습니까?</b></p>
+                                <a  class="comment-delete" href="{% url 'pybo:comment-delete' comment.id %}">삭제하기</a>
+                                <a onclick="unDeleteModal('{{comment.id}}')" class="comment-delete">취소하기</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <p class="{{comment.id}}">{{ comment.content }}</p>
+                </div>
+                    {% endfor %}
+                </div>
+                <!-- left -->
+                <!-- right -->
+                <div class="detail-right">
+                    <h2>{{ profile.title }}</h2>
+                    <div class="detail-info">
+                    <div class="detail-img">
+                        <img src="{{ book.cover }}" style="height: 150px;">
+                    </div>
+                        <table class="detail-table">
+                            <tbody>
+                                <tr>
+                                    <td>작성자</td>
+                                    <td>{{ profile.author }}</td>
+                                </tr>
+                                <tr>
+                                    <td>작성일</td>
+                                    <td>{{ profile.create_at }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="detail-description">
+                        <p><b>내용</b></p><br>
+                        {{ profile.content }}
+                    </div>
+                    <div style="width: 90%;">
+                        {% if liked %}
+                        <a href="{% url 'pybo:unlike' profile.id %}" class="book-btn">이미 추천하셨습니다</a>
+                        {% else %}
+                    <a href="{% url 'pybo:like' profile.id %}" class="book-btn">추천하기</a>
+                        {% endif %}
+                </div>
+            </div>
+            <!-- right -->
+            </div>
+    <script>
+        function deleteModal(n) {
+            var cc = document.getElementsByClassName(n);
+            var ci = document.getElementById(n);
+            for (var i = 0; i < cc.length; i++) {
+                cc[i].style.display = "none";
+            }
+                ci.style.display = "block";
+            }
+        function unDeleteModal(n) {
+            var cc = document.getElementsByClassName(n);
+            var ci = document.getElementById(n);
+            for (var i = 0; i < cc.length; i++) {
+                cc[i].style.display = "block";
+            }
+                ci.style.display = "none";
+            }
+        </script>
+</section>
+{% endblock %}

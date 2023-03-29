@@ -575,3 +575,38 @@ td{
     align-items: center;
     justify-content: center;
 }
+
+.create-profile{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+.profile-create{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 700px;
+}
+
+.profile-text{
+    margin:20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px #fff solid;
+    width: 90%;
+    margin:20px;
+    font-size:20px;
+    color:white;
+}
+
+.profile-textarea{
+    background-color: transparent;
+    border: #fff 3px solid;
+    margin:20px;
+    height: 300px;
+    width: 90%;
+    font-size:20px;
+    color:white;
+}

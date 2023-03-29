@@ -6,18 +6,18 @@
                 <table class="booker-table">
                     <thead>
                         <tr>
-                            <th>사진</th>
-                            <th>이름</th>
-                            <th>댓글수/추천수</th>
+                            <th>소개</th>
+                            <th>작성자</th>
+                            <th>댓글수</th>
                             <th>작성일</th>
                         </tr>
                     </thead>
                     <tbody class="book-tbody">
                     {% for profile in profiles %}
                         <tr>
-                            <td><img src="{{ profile.image }}" class="list-img"></td>
-                            <td><a href="#" class="book-page">{{ profile.title }}</a></td>
-                            <td>{{ profile.profilecomment_set.count }}/{{ profile.like.all.count }}</td>
+                            <td><a href="{% url 'pybo:detail' profile.id %}" class="book-page">{{ profile.title }}</a></td>
+                            <td>{{ profile.author }}</td>
+                            <td>{{ profile.profilecomment_set.count }}</td>
                             <td>{{ profile.create_at }}</td>
                         </tr>
                     {% endfor %}
