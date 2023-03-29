@@ -1,0 +1,30 @@
+{% extends 'pybo-base.html' %}
+{% block content %}
+<section class="section-pybo">
+            <div class="booker-list">
+                <h2>프로필 목록</h2>
+                <table class="booker-table">
+                    <thead>
+                        <tr>
+                            <th>사진</th>
+                            <th>이름</th>
+                            <th>댓글수/추천수</th>
+                            <th>작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody class="book-tbody">
+                    {% for profile in profiles %}
+                        <tr>
+                            <td><img src="{{ profile.image }}" class="list-img"></td>
+                            <td><a href="#" class="book-page">{{ profile.title }}</a></td>
+                            <td>{{ profile.profilecomment_set.count }}/{{ profile.like.all.count }}</td>
+                            <td>{{ profile.create_at }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+
+        </section>
+{% endblock %}

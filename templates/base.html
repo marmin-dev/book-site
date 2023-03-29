@@ -17,6 +17,7 @@
             <a href="/" class="logo">Booker</a>
             <nav class="navbar">
                 <a href="/">Home</a>
+                <a href="{% url 'pybo:index' %}">Pybo</a>
                 <a href="{% url 'booker:book-list' %}">List</a>
                 <a href="{% url 'booker:random' %}">RandomBook</a>
                 {% if user.is_authenticated %}

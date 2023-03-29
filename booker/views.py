@@ -3,7 +3,6 @@ from .models import Book,Comment
 from django.core.paginator import Paginator
 from .forms import CommentForm
 from django.utils import timezone
-from django.contrib.auth.models import User
 import random
 from django.db.models import Count
 from django.contrib.auth.decorators import login_required
@@ -12,7 +11,7 @@ def index(request):
     """
     홈으로 가기
     """
-    return render(request,'home.html',{})
+    return render(request,'booker/home.html',{})
 
 # class BookListView(ListView):
 #     model = Book

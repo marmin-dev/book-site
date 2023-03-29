@@ -565,3 +565,13 @@ td{
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
+
+.section-pybo{
+    height: 100vh;
+    background: url("img/background.jpg")no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
