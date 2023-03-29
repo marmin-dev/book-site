@@ -1,0 +1,16 @@
+{% extends 'pybo-base.html' %}
+{% block content %}
+<section class="section-pybo">
+            <div class="booker-list" style="display:flex; justify-content:center">
+                <h2>프로필 수정하기</h2>
+               <div class="create-profile">
+                <form method="POST" enctype="multipart/form-data" class="profile-create">
+                    {% csrf_token %}
+                    <input type="text" name="title" id="title" class="profile-text" placeholder="내소개제목은?" value="{{ profile.title }}">
+                    <textarea name="content" id="content" class="profile-textarea" placeholder="나를 소개해보세요!" >{{ profile.content }}</textarea>
+                    <button type="submit" class="book-btn" style="margin-top: 30px ;">게시물 수정</button>
+                  </form>
+               </div>
+            </div>
+        </section>
+{% endblock %}

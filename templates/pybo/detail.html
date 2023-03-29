@@ -68,6 +68,12 @@
                         {% else %}
                     <a href="{% url 'pybo:like' profile.id %}" class="book-btn">추천하기</a>
                         {% endif %}
+                        {% if user.username == profile.author %}
+                        <a href="{% url 'pybo:profile-update' profile.id%}" class="book-btn">글 수정하기</a>
+                        <button class="book-btn" onclick="DeleteProfile()" id="profile-delete" style="font-size:16px;">게시글 삭제하기</button>
+                        <a href="{% url 'pybo:profile-delete' profile.id %}" id="profile-confirm"
+                           class="book-btn" style="display:none;;">정말로 삭제하시겠습니까?</a>
+                        {% endif %}
                 </div>
             </div>
             <!-- right -->
@@ -88,6 +94,12 @@
                 cc[i].style.display = "block";
             }
                 ci.style.display = "none";
+            }
+        function DeleteProfile(){
+            var btn1 = document.getElementById('profile-delete');
+            var btn2 = document.getElementById('profile-confirm');
+            btn1.style.display = "none";
+            btn2.style.display = "flex";
             }
         </script>
 </section>

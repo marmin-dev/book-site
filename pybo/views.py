@@ -56,6 +56,30 @@ def profile_detail(request,profile_id):
     context = {'profile':profile,'form':form,'liked':liked}
     return render(request, 'pybo/detail.html', context)
 
+
+@login_required(login_url='login')
+def delete_profile(request,profile_id):
+    profile = get_object_or_404(Profile, pk=profile_id)
+    if request.user.username == profile.author:
+        profile.delete()
+    return redirect('pybo:profile-list')
+
+@login_required(login_url='login')
+def update_profile(request,profile_id):
+    profile = get_object_or_404(Profile, pk=profile_id)
+    if request.method == 'POST':
+        if request.user.username == profile.author:
+            form = ProfileForm(request.POST,instance=profile)
+            if form.is_valid:
+                profile = form.save()
+            return redirect('pybo:detail',profile_id)
+    else:
+        form=ProfileForm()
+    context = {'profile': profile,'form': form}
+    return render(request, 'pybo/profile-update.html', context)
+
+
+
 @login_required(login_url='login')
 def profile_like(request, profile_id):
     """
@@ -105,3 +129,14 @@ def comment_update(request, profile_id,comment_id):
         liked = True
     context = {'profile': profile, 'form': form, 'liked': liked}
     return render(request, 'pybo/comment-update.html', context)
+
+
+class UserProfileView(ListView):
+    model = Profile
+    template_name = 'profile_list.html'
+    context_object_name = 'profiles'
+    paginate_by = 10
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(author=self.request.user).order_by('-create_at')
+

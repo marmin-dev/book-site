@@ -19,9 +19,9 @@
                 <a href="{% url 'pybo:index' %}">Home</a>
                 <a href="/">Booker</a>
                 <a href="{% url 'pybo:profile-list' %}">Profiles</a>
-                <a href="#">SomethingNew</a>
+                <a href="{% url 'pybo:profile-create' %}">NewProfile</a>
                 {% if user.is_authenticated %}
-                <a href="{% url 'booker:profile' %}">{{ user.username }}</a>
+                <a href="{% url 'pybo:profile' user.id %}">{{ user.username }}</a>
                 {% endif %}
                 <a href="{% url 'booker:about-us' %}">AboutUs</a>
                 {% if user.is_authenticated %}

@@ -1,0 +1,49 @@
+{% extends 'pybo-base.html' %}
+{% block content %}
+<section class="section-home">
+            <div class="booker-list">
+                <h2>{{ user.username }}</h2>
+                <p>{{ user.username }}의 자기소개</p>
+                 <table class="booker-table">
+                    <thead>
+                        <tr>
+                            <th>소개</th>
+                            <th>작성자</th>
+                            <th>댓글수</th>
+                            <th>작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody class="book-tbody">
+                    {% for profile in profiles %}
+                        <tr>
+                            <td><a href="{% url 'pybo:detail' profile.id %}" class="book-page">{{ profile.title }}</a></td>
+                            <td>{{ profile.author }}</td>
+                            <td>{{ profile.profilecomment_set.count }}</td>
+                            <td>{{ profile.create_at }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation profile">
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">이전</a></li>
+        {% endif %}
+        {% for page_num in page_obj.paginator.page_range %}
+          {% if page_obj.number == page_num %}
+            <li class="page-item active"><span class="page-link">{{ page_num }}</span></li>
+          {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+          {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">다음</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+
+                </div>
+
+  </section>
+  {% endblock %}

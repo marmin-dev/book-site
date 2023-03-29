@@ -610,3 +610,8 @@ td{
     font-size:20px;
     color:white;
 }
+
+.pagination{
+    display:flex;
+    list-style-type: none;
+}
