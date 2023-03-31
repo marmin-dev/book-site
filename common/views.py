@@ -34,14 +34,14 @@ class PasswordResetView(auth_views.PasswordResetView):
 
 class PasswordResetDoneView(auth_views.PasswordResetDoneView):
     """
-    비밀번호 초기화 - 메일 전송 완료
+    메일 전송
     """
     template_name = 'common/password_reset_done.html'
 
 
 class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
     """
-    비밀번호 초기화 - 새로운 비밀번호 입력
+    비밀번호 재생성
     """
     template_name = 'common/password_reset_confirm.html'
     success_url = reverse_lazy('login')

@@ -6,8 +6,8 @@
                <div class="create-profile">
                 <form method="POST" enctype="multipart/form-data" class="profile-create">
                     {% csrf_token %}
-                    <input type="text" name="title" id="title" class="profile-text" placeholder="내소개제목은?">
-                    <textarea name="content" id="content" class="profile-textarea" placeholder="나를 소개해보세요!"></textarea>
+                    <input type="text" name="title" id="title" class="profile-text" placeholder="내소개제목은?" required>
+                    <textarea name="content" id="content" class="profile-textarea" placeholder="나를 소개해보세요!" required></textarea>
                     <button type="submit" class="book-btn" style="margin-top: 30px ;">게시물 작성</button>
                   </form>
                </div>

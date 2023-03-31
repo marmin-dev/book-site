@@ -22,9 +22,6 @@ def index(request):
 #     page_kwarg = 'page'
 
 def book_list(request):
-    """
-    list view
-    """
     page = request.GET.get('page','1')
     ca = request.GET.get('ca','recent')
     if ca == 'title':

@@ -133,7 +133,7 @@ def comment_update(request, profile_id,comment_id):
 
 class UserProfileView(ListView):
     model = Profile
-    template_name = 'profile_list.html'
+    template_name = 'pybo/hello.html'
     context_object_name = 'profiles'
     paginate_by = 10
     def get_queryset(self):
